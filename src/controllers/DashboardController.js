@@ -3,7 +3,11 @@ import House from "../models/House";
 class DashboardController{
 
     async show(req, res){
-        return res.json({ok: true});
+
+        const { user_id } = req.headers;
+
+        const houses = await House.find({ user: user_id});
+        return res.json(houses);
 
     }
 

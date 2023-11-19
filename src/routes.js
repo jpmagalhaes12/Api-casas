@@ -1,15 +1,15 @@
 import { Router } from 'express';
 import multer from 'multer';
-import uploadConfig from './config/upload.js'
+import uploadConfig from './config/upload';
 import SessionController from './controllers/SessionController';
 import HouseController from './controllers/HouseController';
-import DashboardController from './controllers/DashboardController.js';
-import ReserveController from './controllers/ReserveController.js';
+import DashboardController from './controllers/DashboardController';
+import ReserveController from './controllers/ReserveController';
 
 const routes = new Router();
 const upload = multer(uploadConfig);
 
-routes.post('/sessions',SessionController.store);
+routes.post('/sessions', SessionController.store);
 
 routes.post('/houses', upload.single('thumbnail'), HouseController.store);
 routes.get('/houses', HouseController.index);
